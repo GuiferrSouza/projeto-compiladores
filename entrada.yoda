@@ -1,0 +1,11 @@
+imprimir "Seu nome é:", você deve;
+#ouvir nome você deve;
+valor "Luke", tenha nome
+#declare nome como palavra, com nome você deve;
+
+imprimir "Sua idade é:", você deve;
+ouvir idade você deve;
+declare idade como número, com idade você deve;
+
+imprimir nome, você deve;
+imprimir idade, você deve;
