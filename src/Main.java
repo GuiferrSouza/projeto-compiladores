@@ -1,11 +1,10 @@
 import lexer.Lexer;
 import lexer.Token;
-import java.io.IOException;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String[] testCases = {
                 "+++",
                 "123 + 456",
