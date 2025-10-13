@@ -4,23 +4,26 @@ import lexer.AFD;
 import lexer.Token;
 import java.text.CharacterIterator;
 
-public class Number extends AFD {
+public class NumberAutomatos extends AFD {
     @Override
     public Token evaluate(CharacterIterator code) {
         if (Character.isDigit(code.current())) {
             String number = readNumber(code);
 
             if (code.current() == '.') {
+                int dotPos = code.getIndex();
                 number += '.';
                 code.next();
+
                 String decimalPart = readNumber(code);
                 if (decimalPart.isEmpty()) {
-                    return null;
+                    code.setIndex(dotPos);
+                    number = number.substring(0, number.length() - 1);
                 }
-                number += decimalPart;
             }
 
-            if (isTokenSeparator(code)) {
+            char next = code.current();
+            if (!Character.isLetter(next) && next != '_') {
                 return new Token("NUM", number);
             }
         }
