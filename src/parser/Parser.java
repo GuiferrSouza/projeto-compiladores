@@ -28,11 +28,16 @@ public class Parser {
     }
 
     private Token consumir(String tipo, String mensagemErro) {
+        if (tipo == "PONTO_VIRGULA"){
+            System.out.println("a");
+        }
+        
         if (verificar(tipo)) {
             Token token = tokenAtual;
             avancar();
             return token;
         }
+        
         throw new RuntimeException("Erro de sintaxe: " + mensagemErro +
                 ". Esperado: " + tipo + ", Encontrado: " +
                 tokenAtual.getTipo() + " '" + tokenAtual.getLexema() + "'");
