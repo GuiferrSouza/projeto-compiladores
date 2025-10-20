@@ -1,7 +1,6 @@
 package lexer;
-
-import lexer.automatos.MathOperator;
-import lexer.automatos.Number;
+import lexer.automatos.*;
+import lexer.automatos.NumberAutomatos;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
@@ -17,27 +16,54 @@ public class Lexer {
         this.code = new StringCharacterIterator(code);
         afds = new ArrayList<>();
 
-        afds.add(new Number());
-        afds.add(new MathOperator());
+        afds.add(new StringAutomatos());
+        afds.add(new NumberAutomatos());
+        afds.add(new KeywordAutomatos());
+        afds.add(new MathOperatorAutomatos());
+        afds.add(new DelimiterAutomatos());
     }
 
     public void skipWhiteSpace() {
-        while (code.current() == ' ' || code.current() == '\n' || code.current() == '\t') {
+        while (code.current() == ' ' ||
+                code.current() == '\n' ||
+                code.current() == '\t' ||
+                code.current() == '\r') {
             code.next();
         }
     }
 
+    public void skipComments() {
+        if (code.current() == '/' && peekNext() == '/') {
+            while (code.current() != '\n' && code.current() != CharacterIterator.DONE) {
+                code.next();
+            }
+        }
+    }
+
+    private char peekNext() {
+        int pos = code.getIndex();
+        code.next();
+        char next = code.current();
+        code.setIndex(pos);
+        return next;
+    }
+
     private void error() {
-        throw new RuntimeException("Error: token not recognized: '" + code.current() + "' at position " + code.getIndex());
+        throw new RuntimeException("Erro: token não reconhecido: '" + code.current() +
+                "' na posição " + code.getIndex());
     }
 
     public List<Token> getTokens() {
         Token t;
         do {
             skipWhiteSpace();
+            skipComments();
+            skipWhiteSpace();
+
             t = searchNextToken();
             if (t == null) error();
             tokens.add(t);
+
         } while (!t.getTipo().equals("EOF"));
 
         return tokens;
