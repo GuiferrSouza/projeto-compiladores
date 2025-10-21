@@ -19,6 +19,6 @@ public class Assignment extends Declaration {
 
     @Override
     public String toString() {
-        return "Assignment(" + nome + " = " + valor + ")";
+        return "atribuicao(" + nome + " = " + valor + ")";
     }
 }
