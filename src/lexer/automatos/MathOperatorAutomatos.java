@@ -10,11 +10,11 @@ public class MathOperatorAutomatos extends AFD {
         return switch (code.current()) {
             case '+' -> {
                 code.next();
-                yield new Token("PLUS", "+");
+                yield new Token("MAIS", "+");
             }
             case '-' -> {
                 code.next();
-                yield new Token("MINUS", "-");
+                yield new Token("MENOS", "-");
             }
             case '*' -> {
                 code.next();

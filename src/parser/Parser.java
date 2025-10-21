@@ -28,10 +28,6 @@ public class Parser {
     }
 
     private Token consumir(String tipo, String mensagemErro) {
-        if (tipo == "PONTO_VIRGULA"){
-            System.out.println("a");
-        }
-        
         if (verificar(tipo)) {
             Token token = tokenAtual;
             avancar();
@@ -79,6 +75,10 @@ public class Parser {
             return parsearComandoRetornar();
         }
 
+        if (verificar("IDENTIFICADOR")) {
+            return parsearAtribuicao();
+        }
+
         throw new RuntimeException("Declaração inválida: " + tokenAtual.getLexema());
     }
 
@@ -94,6 +94,18 @@ public class Parser {
         consumir("PONTO_VIRGULA", "Esperado ';'");
 
         return new VariableDeclaration(tipo, nome, valor);
+    }
+
+    // NOVO: Método para parsear atribuição
+    private Assignment parsearAtribuicao() {
+        Token nomeToken = consumir("IDENTIFICADOR", "Esperado identificador");
+        String nome = nomeToken.getLexema();
+
+        consumir("ATRIBUICAO", "Esperado '='");
+        Expression valor = parsearExpressao();
+        consumir("PONTO_VIRGULA", "Esperado ';'");
+
+        return new Assignment(nome, valor);
     }
 
     private PrintCommand parsearComandoImprimir() {
@@ -246,7 +258,7 @@ public class Parser {
     private Expression parsearTermo() {
         Expression esquerda = parsearFator();
 
-        while (verificar("MULTIPLICACAO") || verificar("DIVISAO") || verificar("MODULO")) {
+        while (verificar("MULT") || verificar("DIV")) {
             String operador = tokenAtual.getLexema();
             avancar();
             Expression direita = parsearFator();

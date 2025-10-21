@@ -9,11 +9,15 @@ import java.util.List;
 public class TestParser2 {
 
     public static void main(String[] args) {
-        testar("Operações aritméticas",
+        System.out.println("=== TESTE DO PARSER (ANÁLISE SINTÁTICA) ===\n");
+
+        testar("Loop ENQUANTO",
                 """
-                inteiro a = 10;
-                inteiro soma = a + 1;
-                """);
+                        inteiro contador = 0;
+                        enquanto (contador - 4 < 5) {
+                            imprimir(contador);
+                            contador = contador + 1;
+                        }""");
     }
 
     private static void testar(String descricao, String codigo) {
@@ -47,6 +51,7 @@ public class TestParser2 {
             System.out.println();
             System.out.println();
 
+            // Fase 2: Análise Sintática
             System.out.println("ANÁLISE SINTÁTICA:");
             Parser parser = new Parser(tokens);
             Program programa = parser.parsear();
@@ -54,6 +59,7 @@ public class TestParser2 {
             System.out.println("✓ Análise sintática concluída com sucesso!");
             System.out.println();
 
+            // Mostra a AST gerada
             System.out.println("AST GERADA:");
             System.out.println(programa);
 

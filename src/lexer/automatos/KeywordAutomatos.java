@@ -18,11 +18,9 @@ public class KeywordAutomatos extends AFD {
         KEYWORDS.put("imprimir", "IMPRIMIR");
         KEYWORDS.put("se", "SE");
         KEYWORDS.put("senao", "SENAO");
-        KEYWORDS.put("senão", "SENAO");
         KEYWORDS.put("enquanto", "ENQUANTO");
         KEYWORDS.put("para", "PARA");
         KEYWORDS.put("funcao", "FUNCAO");
-        KEYWORDS.put("função", "FUNCAO");
         KEYWORDS.put("retornar", "RETORNAR");
         KEYWORDS.put("verdadeiro", "VERDADEIRO");
         KEYWORDS.put("falso", "FALSO");
