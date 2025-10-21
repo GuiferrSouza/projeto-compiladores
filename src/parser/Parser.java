@@ -51,7 +51,7 @@ public class Parser {
 
     private Declaration parsearDeclaracao() {
         if (verificar("TIPO_TEXTO") || verificar("TIPO_INTEIRO") ||
-                verificar("TIPO_DECIMAL") || verificar("TIPO_BOLEANO")) {
+                verificar("TIPO_DECIMAL") || verificar("TIPO_logico")) {
             return parsearDeclaracaoVariavel();
         }
 

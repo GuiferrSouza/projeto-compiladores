@@ -11,15 +11,13 @@ public class NumberAutomatos extends AFD {
             String number = readNumber(code);
 
             if (code.current() == '.') {
-                int dotPos = code.getIndex();
-                number += '.';
                 code.next();
-
-                String decimalPart = readNumber(code);
-                if (decimalPart.isEmpty()) {
-                    code.setIndex(dotPos);
-                    number = number.substring(0, number.length() - 1);
-                }
+                    if (Character.isDigit(code.current())) {
+                        number += "." + readNumber(code);
+                    } else {
+                        // Se não tem dígitos após o ponto, é um erro léxico
+                        throw new RuntimeException("Número decimal inválido na posição " + (code.getIndex() - 1));
+                    }
             }
 
             char next = code.current();

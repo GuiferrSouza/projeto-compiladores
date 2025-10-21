@@ -11,11 +11,14 @@ public class KeywordAutomatos extends AFD {
     private static final Map<String, String> KEYWORDS = new HashMap<>();
 
     static {
+        KEYWORDS.put("programa", "PROGRAMA");
+        KEYWORDS.put("fimprog", "FIMPROG"); 
         KEYWORDS.put("texto", "TIPO_TEXTO");
         KEYWORDS.put("inteiro", "TIPO_INTEIRO");
         KEYWORDS.put("decimal", "TIPO_DECIMAL");
-        KEYWORDS.put("boleano", "TIPO_BOLEANO");
+        KEYWORDS.put("logico", "TIPO_LOGICO");
         KEYWORDS.put("imprimir", "IMPRIMIR");
+        KEYWORDS.put("ler", "LER");
         KEYWORDS.put("se", "SE");
         KEYWORDS.put("senao", "SENAO");
         KEYWORDS.put("enquanto", "ENQUANTO");
@@ -32,7 +35,7 @@ public class KeywordAutomatos extends AFD {
         if (Character.isLetter(code.current()) || code.current() == '_') {
             String word = readWord(code);
 
-            if (isTokenSeparator(code)) {
+            if (!Character.isLetterOrDigit(code.current()) && code.current() != '_') {
                 String tokenType = KEYWORDS.get(word.toLowerCase());
                 return new Token(Objects.requireNonNullElse(tokenType, "IDENTIFICADOR"), word);
             }

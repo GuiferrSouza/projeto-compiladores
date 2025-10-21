@@ -1,6 +1,6 @@
 package lexer;
 import lexer.automatos.*;
-import lexer.automatos.NumberAutomatos;
+
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
@@ -37,6 +37,9 @@ public class Lexer {
             while (code.current() != '\n' && code.current() != CharacterIterator.DONE) {
                 code.next();
             }
+            if (code.current() == '\n') {
+            code.next();
+            }
         }
     }
 
@@ -58,7 +61,6 @@ public class Lexer {
         do {
             skipWhiteSpace();
             skipComments();
-            skipWhiteSpace();
 
             t = searchNextToken();
             if (t == null) error();

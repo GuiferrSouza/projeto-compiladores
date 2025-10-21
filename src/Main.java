@@ -10,7 +10,7 @@ public class Main {
                 texto meuTexto = "abc";
                 inteiro meuInteiro = 100;
                 decimal meuDecimal é meuInteiro + 10.0;
-                boleano meuBoleano = verdadeiro;""";
+                logico meulogico = verdadeiro;""";
 
         System.out.println("=== CÓDIGO FONTE ===");
         System.out.println(codigo);
@@ -40,8 +40,8 @@ public class Main {
                 "inteiro x é 10 + 20 * 2;",
                 "decimal pi é 3.14159;",
                 "texto nome é \"João Silva\";",
-                "boleano ativo é verdadeiro;",
-                "boleano inativo é falso;",
+                "logico ativo é verdadeiro;",
+                "logico inativo é falso;",
                 "imprimir(\"Teste: \" + nome);"
         };
 

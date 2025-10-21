@@ -16,7 +16,7 @@ public class TestParser {
                 """
                         inteiro x = 10;
                         texto nome = "João";
-                        boleano ativo = verdadeiro;""");
+                        logico ativo = verdadeiro;""");
 
         // Teste 2: Comando imprimir
         testar("Comando imprimir",
@@ -63,7 +63,7 @@ public class TestParser {
                 """
                         inteiro x = 10;
                         inteiro y = 20;
-                        boleano resultado = (x > 5) && (y < 30);
+                        logico resultado = (x > 5) && (y < 30);
                         inteiro calc = x * 2 + y / 4 - 3;""");
 
         // Teste 8: Programa completo
