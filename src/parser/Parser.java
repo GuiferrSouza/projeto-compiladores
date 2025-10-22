@@ -36,7 +36,8 @@ public class Parser {
         
         throw new RuntimeException("Erro de sintaxe: " + mensagemErro +
                 ". Esperado: " + tipo + ", Encontrado: " +
-                tokenAtual.getTipo() + " '" + tokenAtual.getLexema() + "'");
+                tokenAtual.getTipo() + " '" + tokenAtual.getLexema() + "'"+
+                " na posição " + (posicao+1));
     }
 
     public Program parsear() {
@@ -51,7 +52,7 @@ public class Parser {
 
     private Declaration parsearDeclaracao() {
         if (verificar("TIPO_TEXTO") || verificar("TIPO_INTEIRO") ||
-                verificar("TIPO_DECIMAL") || verificar("TIPO_logico")) {
+                verificar("TIPO_DECIMAL") || verificar("TIPO_LOGICO")) {
             return parsearDeclaracaoVariavel();
         }
 
