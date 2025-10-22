@@ -84,7 +84,7 @@ public class TestParser {
         // Teste 9: Erro de sintaxe (para testar validação)
         System.out.println("\n=== TESTE DE VALIDAÇÃO DE ERROS ===\n");
         testar("Erro: faltando ponto e vírgula",
-                "inteiro _10 = 10;");  // Faltando ;
+                "inteiro _10 = 10");  // Faltando ;
 
         testar("Erro: faltando parêntese",
                 "imprimir(\"teste\";");  // Faltando )
