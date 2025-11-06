@@ -1,3 +1,5 @@
+import files.FileReader;
+import files.FileWriter;
 import lexer.Lexer;
 import lexer.Token;
 import java.util.List;
@@ -5,7 +7,18 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String codigo = """
+
+        //linha 11 ate a 19 eu criei o teste para demonstrar e comentei a linha 21 ate 30
+        String codigo = null;
+        try {
+            codigo = FileReader.LerArquivoCompleto("teste.txt"); //Aqui ele le um arquivo com o path correto, deixa ele junto da pasta que tem a gramatica
+            FileWriter.CriarArquivo("testete.txt", codigo); // Aqui vc passa um nome para o arquivo e o valor em string, ele vai criar um arquivo tbm junto com a gramatica
+            System.out.println(codigo);
+        }catch (Exception e) {
+            System.err.println("ERRO: " + e.getMessage());
+        }
+
+        /*String codigo = """
                 imprimir("Olá Mundo!");
                 texto meuTexto = "abc";
                 inteiro meuInteiro = 100;
@@ -14,7 +27,7 @@ public class Main {
 
         System.out.println("=== CÓDIGO FONTE ===");
         System.out.println(codigo);
-        System.out.println("\n=== TOKENS GERADOS ===\n");
+        System.out.println("\n=== TOKENS GERADOS ===\n");*/
 
         try {
             Lexer lexer = new Lexer(codigo);

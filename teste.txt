@@ -1,0 +1,5 @@
+imprimir("Olá Mundo!");
+texto meuTexto = "abc";
+inteiro meuInteiro = 100;
+decimal meuDecimal é meuInteiro + 10.0;
+logico meulogico = verdadeiro;
